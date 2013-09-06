@@ -12,7 +12,9 @@
 		else if($which_page == "comment_content")
 		{
 				//javascript for lightbox
-				echo "<script type='text/javascript' src='".base_url()."assets/js/lightbox.js'></script>";
+				//echo "<script type='text/javascript' src='".base_url()."assets/js/lightbox.js'></script>";
+				include_once "reveal-jquery-includes.php";
+				echo "\n";
 		}
 	?>
 	<title>Apple Top Company</title>

@@ -1,25 +1,17 @@
 		<div id="content-noside">
 			<h1>Customer Comments</h1><br>
-			<div class='backdrop'></div>
-			<!--<table class="gridtable">
-				<tr>
-					<th>Name</th>
-					<th>Comment</th>
-					<th></th>
-				</tr>-->
 			<?php
-				//print_r($results);
 				$count = count($results);
+				$format =
+					"<p>%s 
+						<a href='#' data-reveal-id='myModal%s' data-animation='fade'>Read comment</a>
+						<div id='myModal%s' class='reveal-modal'><h1>%s</h1><p>%s</p>
+						<a class='close-reveal-modal'>&#215;</a></div>\n\n\t\t\t";
+				
 				foreach($results as $row)
 				{
-					//echo "<tr><td>".$row->name."</td>";
-					//echo "<td>".$row->City."</td><td><a href='#'>Read comment</a></td></tr>";
-					
-					echo "\n<p>".$row->name."";
-					echo " ".$row->City." <a class='openlightbox' data-reveal-id='myModal".$count--."' href='#'>Read comment</a>";
-					echo "\n<div class='lightbox'><div class='close'>x</div>".$row->details."</div>";
+					echo sprintf($format, $row->name, $count, $count--, $row->name, $row->details);
 				}
-				//</table>
 			?>
 			
 		</div>
