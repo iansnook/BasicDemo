@@ -2,21 +2,20 @@
 
 class home_controller extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */ 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->helper("form");
+					
+		$this->nav = array(
+			array('Home', site_url('home_controller/home'),'home'),
+			array('About', site_url('home_controller/about'),'about'),
+			array('Request A Quote', site_url('home_controller/quote'),'quote'),
+			array('Comments', site_url('home_controller/comment'),'comment'),
+			array('Contact', site_url('home_controller/contact'),'contact'));
+			
+		$this->load->vars(array('NavigationArray' => $this->nav));
+	}
 
 	public function index()
 	{
@@ -25,21 +24,21 @@ class home_controller extends CI_Controller {
 	
 	public function home()
 	{	
-		$data['which_page'] = "home_content"; 
+		$data['which_page'] = "home"; 
 		
 		$this->load->view('site_outline', $data);
 	}
 	
 	public function about()
 	{
-		$data['which_page'] = "about_content"; 
+		$data['which_page'] = "about"; 
 		
 		$this->load->view('site_outline', $data);
 	}
 	
 	public function quote()
 	{
-		$data['which_page'] = "quote_content"; 
+		$data['which_page'] = "quote"; 
 		
 		$this->load->view('site_outline', $data);
 	}
@@ -54,7 +53,7 @@ class home_controller extends CI_Controller {
 		$this->form_validation->set_rules("emailAddress","Email Address", "required|valid_email|xss_clean");
 		$this->form_validation->set_rules("details","Details", "required|xss_clean");
 		
-		$data['which_page'] = "quote_content"; 
+		$data['which_page'] = "quote"; 
 		
 		if($this->form_validation->run() == TRUE)
 		{
@@ -65,8 +64,8 @@ class home_controller extends CI_Controller {
 			);
 			$this->access_db->insert($form_data);
 			$data['which_page'] = "form_success";
+			$_POST = array();
 		}
-		//print_r($data);
 		$this->load->view('site_outline', $data);
 	}
 	
@@ -76,7 +75,7 @@ class home_controller extends CI_Controller {
 		$this->load->model("access_db");
 		$data['results'] = $this->access_db->getAll();
 		
-		$data['which_page'] = "comment_content"; 
+		$data['which_page'] = "comment"; 
 		
 		$this->load->view('site_outline', $data);
 	}
@@ -87,7 +86,7 @@ class home_controller extends CI_Controller {
 		$this->load->model("access_db");
 		$data['results'] = $this->access_db->selectLocations();
 		
-		$data['which_page'] = "contact_content"; 
+		$data['which_page'] = "contact"; 
 		
 		$this->load->view('site_outline', $data);
 	}

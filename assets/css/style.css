@@ -144,6 +144,18 @@ table.gridtable td {
 		margin: 20px 0 0 0;
 	}
 	
+	#comment-list{
+		text-align: left;
+		font-size: 11px;
+		border: 1px solid #778D8D;
+		line-height: 32px;
+		padding: 5px;
+		margin: 5px;
+		width: 250px;
+		border-radius: 15px;
+		background: #D0D0D0
+	}
+	
 	#nav {
 		margin:0px;
 		padding:0px;

@@ -1,14 +1,4 @@
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"></script>
-	
-	<?php 
-		//echo json_encode($results);
-		//echo 
-		//var mapProp = {
-			//  center:new google.maps.LatLng(49.2273,-122.6883),
-			  //zoom:15,
-			  //mapTypeId:google.maps.MapTypeId.ROADMAP
-			  //};
-	?>
 	<script>
 		function initialize()
 		{
